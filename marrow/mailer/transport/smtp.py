@@ -110,9 +110,9 @@ class SMTPTransport(object):
 	
 	def send_with_smtp(self, message):
 		try:
-			sender = bytes(message.envelope)
+			sender = str(message.envelope)
 			recipients = message.recipients.string_addresses
-			content = bytes(message)
+			content = str(message)
 		
 			self.connection.sendmail(sender, recipients, content)
 			self.sent += 1

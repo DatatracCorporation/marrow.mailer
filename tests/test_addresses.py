@@ -235,5 +235,5 @@ class TestAddressList(object):
 	
 	def test_return_addresses_as_strings(self):
 		self.addresses = 'foo@exámple.test'
-		encoded_address = b'foo@xn--exmple-qta.test'
+		encoded_address = 'foo@xn--exmple-qta.test'
 		eq_([encoded_address], self.addresses.string_addresses)

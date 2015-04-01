@@ -184,7 +184,7 @@ class AddressList(list):
 		"""Return a list of string representations of the addresses suitable
 		for usage in an SMTP transaction."""
 		encoding = encoding if encoding else self.encoding
-		return [a.encode(encoding) for a in AddressList([i.address for i in self])]
+		return [a.encode(encoding).decode('utf8') for a in AddressList([i.address for i in self])]
 
 
 class AutoConverter(object):
