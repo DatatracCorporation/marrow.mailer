@@ -293,7 +293,7 @@ class Message(object):
 		else:
 			raise TypeError("Unable to read attachment contents")
 		
-		part.set_payload(WRAP.fill(value))
+		part.set_payload(WRAP.fill(value.decode('ascii')))
 		
 		if not filename:
 		   filename = name
