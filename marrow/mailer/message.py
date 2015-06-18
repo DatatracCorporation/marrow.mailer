@@ -295,16 +295,16 @@ class Message(object):
 		
 		part.set_payload(WRAP.fill(value))
 		
+		if not filename:
+		   filename = name
+		filename = os.path.basename(filename)
+		
 		if inline:
-			part.add_header('Content-Disposition', 'inline', filename=name)
-			part.add_header('Content-ID', '<%s>' % name)
+			part.add_header('Content-Disposition', 'inline', filename=filename)
+			part.add_header('Content-ID', '<%s>' % filename)
 			part.add_header('Content-Transfer-Encoding','base64')
 			self.embedded.append(part)
 		else:
-			if filename:
-			   filename = os.path.basename(filename)
-			else:
-			   filename = name
 			part.add_header('Content-Disposition', 'attachment', filename=filename)
 			part.add_header('Content-Transfer-Encoding','base64')
 			self.attachments.append(part)
